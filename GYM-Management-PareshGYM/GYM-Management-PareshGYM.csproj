@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClubProRequestHandler.cs" />
+    <Compile Include="CustomDownloadHandler.cs" />
     <Compile Include="frmGymManagement.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -145,6 +145,8 @@ namespace GYM_Management_PareshGYM
             browser.RequestHandler =
     new ClubProRequestHandler();
 
+            browser.DownloadHandler = new CustomDownloadHandler();
+
             browser.Dock = DockStyle.Fill;
 
             browser.FrameLoadEnd +=
