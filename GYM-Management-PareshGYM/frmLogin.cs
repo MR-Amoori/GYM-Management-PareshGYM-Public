@@ -24,6 +24,8 @@ namespace Paresh_GYM_Management_System
             this.BackColor = Color.FromArgb(26, 35, 58);
             txtUsername.BackColor = Color.FromArgb(39, 44, 77);
             txtPassword.BackColor = Color.FromArgb(39, 44, 77);
+
+            LoadCredentials();
         }
 
         private void tlsBtnProgrammer_Click(object sender, EventArgs e)
@@ -49,127 +51,62 @@ namespace Paresh_GYM_Management_System
             Application.Exit();
         }
 
-        private bool LoadCredentials(out string username, out string password)
+        private void LoadCredentials()
         {
-            username = string.Empty;
-            password = string.Empty;
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "credentials.txt");
+            if (!File.Exists(path)) return;
 
-            string credentialsPath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "credentials.txt");
-
-            if (!File.Exists(credentialsPath))
+            foreach (string line in File.ReadAllLines(path))
             {
-                MessageBox.Show(
-                    "فایل اطلاعات ورود پیدا نشد:\n\n" + credentialsPath,
-                    "خطا",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            try
-            {
-                string[] lines = File.ReadAllLines(
-                    credentialsPath,
-                    Encoding.UTF8);
-
-                foreach (string rawLine in lines)
+                if (!string.IsNullOrWhiteSpace(line) && line.Contains("="))
                 {
-                    string line = rawLine.Trim();
-
-                    // خطوط خالی و توضیحات نادیده گرفته می‌شوند
-                    if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
-                        continue;
-
-                    int separatorIndex = line.IndexOf('=');
-
-                    // خط باید به شکل key=value باشد
-                    if (separatorIndex <= 0)
-                        continue;
-
-                    string key = line
-                        .Substring(0, separatorIndex)
-                        .Trim()
-                        .ToLowerInvariant();
-
-                    string value = line
-                        .Substring(separatorIndex + 1)
-                        .Trim();
-
-                    if (key == "username")
-                    {
-                        username = value;
-                    }
-                    else if (key == "password")
-                    {
-                        password = value;
-                    }
+                    string[] parts = line.Split('=');
+                    appUsers[parts[0].Trim()] = parts[1].Trim();
                 }
-
-                if (string.IsNullOrWhiteSpace(username) ||
-                    string.IsNullOrWhiteSpace(password))
-                {
-                    MessageBox.Show(
-                        "اطلاعات ورود در فایل credentials.txt کامل نیست.\n\n" +
-                        "ساختار صحیح فایل:\n" +
-                        "username=نام_کاربری\n" +
-                        "password=رمز_عبور",
-                        "خطا",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    return false;
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "خطا در خواندن فایل اطلاعات ورود:\n\n" + ex.Message,
-                    "خطا",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
             }
         }
 
+
+        private Dictionary<string, string> appUsers = new Dictionary<string, string>
+{
+    { "admin_user", "ahmad" }, { "admin_pass", "021021" },
+    { "men_user", "admin2" }, { "men_pass", "020020" },
+    { "women_user", "admin3" }, { "women_pass", "030030" }
+};
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!LoadCredentials(
-                    out string validUsername,
-                    out string validPassword))
+            string user = txtUsername.Text.Trim();
+            string pass = txtPassword.Text;
+
+            if (user == appUsers["admin_user"] && pass == appUsers["admin_pass"]) // مدیر
             {
-                return;
+                GYM_Management_PareshGYM.Passwords.SelectedWebUsername = GYM_Management_PareshGYM.Passwords.ManagerWebUser;
+                GYM_Management_PareshGYM.Passwords.SelectedWebPassword = GYM_Management_PareshGYM.Passwords.ManagerWebPass;
+                MessageBox.Show("ورود شما بعنوان مدیر با موفقیت انجام گردید", "ورود", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
             }
-
-            string enteredUsername = txtUsername.Text.Trim();
-            string enteredPassword = txtPassword.Text;
-
-            if (enteredUsername == validUsername &&
-                enteredPassword == validPassword)
+            else if (user == appUsers["men_user"] && pass == appUsers["men_pass"]) // منشی آقایان
             {
-                MessageBox.Show(
-                    "ورود شما با موفقیت انجام گردید",
-                    "ورود",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                GYM_Management_PareshGYM.Passwords.SelectedWebUsername = GYM_Management_PareshGYM.Passwords.MenSecWebUser;
+                GYM_Management_PareshGYM.Passwords.SelectedWebPassword = GYM_Management_PareshGYM.Passwords.MenSecWebPass;
+                MessageBox.Show("ورود شما بعنوان منشی آقایان با موفقیت انجام گردید", "ورود", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
 
+            }
+            else if (user == appUsers["women_user"] && pass == appUsers["women_pass"]) // منشی بانوان
+            {
+                GYM_Management_PareshGYM.Passwords.SelectedWebUsername = GYM_Management_PareshGYM.Passwords.WomenSecWebUser;
+                GYM_Management_PareshGYM.Passwords.SelectedWebPassword = GYM_Management_PareshGYM.Passwords.WomenSecWebPass;
+                MessageBox.Show("ورود شما بعنوان منشی بانوان با موفقیت انجام گردید", "ورود", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show(
-                    "نام کاربری یا رمز عبور نادرست است",
-                    "خطا",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
+                MessageBox.Show("نام کاربری یا رمز عبور نادرست است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.SelectAll();
                 txtPassword.Focus();
+                return;
             }
         }
 

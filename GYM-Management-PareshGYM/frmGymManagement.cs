@@ -18,7 +18,7 @@ namespace GYM_Management_PareshGYM
         // یک کلاس با نام Passwords درست میشه با فرمت زیر:
         //internal readonly string clubProUsername = "09120000000";
         //internal readonly string clubProPassword = "kad2@kjs";
-        Passwords passwords = new Passwords();
+       // Passwords passwords = new Passwords();
 
         private bool phoneLoginSubmitted = false;
         private bool passwordLoginSubmitted = false;
@@ -285,7 +285,7 @@ namespace GYM_Management_PareshGYM
             }
 
             string encodedUsername =
-                JavaScriptEncode(passwords.clubProUsername);
+                JavaScriptEncode(Passwords.SelectedWebUsername);
 
             string script = $@"
 (function () {{
@@ -366,7 +366,7 @@ namespace GYM_Management_PareshGYM
             }
 
             string encodedPassword =
-                JavaScriptEncode(passwords.clubProPassword);
+                JavaScriptEncode(Passwords.SelectedWebPassword);
 
             string script = $@"
 (function () {{
