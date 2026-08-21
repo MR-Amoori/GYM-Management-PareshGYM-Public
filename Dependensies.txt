@@ -1,0 +1,2 @@
+۱. نصب .NET Framework 4.6.2.
+۲. نصب Visual C++ Redistributable 2015-2022 (نسخه x86).
