@@ -32,6 +32,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnReloadPage = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDownloads = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnDownloads);
             this.splitContainer1.Panel1.Controls.Add(this.btnReloadPage);
             this.splitContainer1.Panel1.Controls.Add(this.btnLogout);
             // 
@@ -85,6 +87,19 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnDownloads
+            // 
+            this.btnDownloads.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDownloads.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloads.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnDownloads.Location = new System.Drawing.Point(416, 0);
+            this.btnDownloads.Name = "btnDownloads";
+            this.btnDownloads.Size = new System.Drawing.Size(208, 36);
+            this.btnDownloads.TabIndex = 2;
+            this.btnDownloads.Text = "پوشه گزارشات";
+            this.btnDownloads.UseVisualStyleBackColor = true;
+            this.btnDownloads.Click += new System.EventHandler(this.btnDownloads_Click);
+            // 
             // frmGymManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +125,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnReloadPage;
+        private System.Windows.Forms.Button btnDownloads;
     }
 }
 

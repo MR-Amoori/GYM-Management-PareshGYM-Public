@@ -755,5 +755,19 @@ namespace GYM_Management_PareshGYM
 
             InitBrowser();
         }
+
+        private void btnDownloads_Click(object sender, EventArgs e)
+        {
+            string downloadPath = System.IO.Path.Combine(Application.StartupPath, "Downloads");
+
+            if (System.IO.Directory.Exists(downloadPath))
+            {
+                System.Diagnostics.Process.Start("explorer.exe", downloadPath);
+            }
+            else
+            {
+                MessageBox.Show("پوشه گزارشات هنوز ایجاد نشده است.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
