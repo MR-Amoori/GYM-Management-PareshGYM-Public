@@ -35,7 +35,10 @@ namespace GYM_Management_PareshGYM
 
         public void OnDownloadUpdated(IWebBrowser chromiumWebBrowser, IBrowser browser, DownloadItem downloadItem, IDownloadItemCallback callback)
         {
-            // می‌توانید کدهای مربوط به پیشرفت دانلود را اینجا بنویسید (در صورت نیاز)
+            if (downloadItem.IsComplete)
+            {
+                MessageBox.Show("دانلود فایل تکمیل شد.", "دانلود", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
