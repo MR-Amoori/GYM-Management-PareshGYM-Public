@@ -357,7 +357,7 @@ namespace GYM_Management_PareshGYM
         {
 
             Debug.WriteLine("شروع جستجوی فیلد رمز عبور...");
-            bool passwordExists = await WaitForElementAsync("#password");
+            bool passwordExists = await WaitForElementAsync("#loginPassword");
             if (!passwordExists)
             {
                 Debug.WriteLine("تایم‌اوت: فیلد رمز عبور در صفحه پیدا نشد.");
@@ -372,7 +372,7 @@ namespace GYM_Management_PareshGYM
             string script = $@"
 (function () {{
     var input =
-        document.querySelector('#password');
+        document.querySelector('#loginPassword');
 
     if (!input) {{
         return 'PASSWORD_NOT_FOUND';
