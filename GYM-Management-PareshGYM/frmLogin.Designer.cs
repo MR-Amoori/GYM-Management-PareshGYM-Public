@@ -46,6 +46,10 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rdbtnMan = new System.Windows.Forms.RadioButton();
+            this.rdbtnWoman = new System.Windows.Forms.RadioButton();
+            this.rdbtnsDelete = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(27, 77);
+            this.label2.Location = new System.Drawing.Point(27, 110);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 19);
@@ -168,11 +172,11 @@
             // 
             this.txtPassword.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.txtPassword.ForeColor = System.Drawing.Color.White;
-            this.txtPassword.Location = new System.Drawing.Point(123, 74);
+            this.txtPassword.Location = new System.Drawing.Point(123, 107);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPassword.Size = new System.Drawing.Size(316, 27);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 4;
             this.txtPassword.Text = "رمز عبور را وارد نمایید";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
@@ -182,10 +186,10 @@
             // 
             this.btnExit.BackColor = System.Drawing.Color.Brown;
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(12, 111);
+            this.btnExit.Location = new System.Drawing.Point(12, 144);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(103, 37);
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "خروج";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -194,20 +198,73 @@
             // 
             this.btnLogin.BackColor = System.Drawing.Color.ForestGreen;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(123, 111);
+            this.btnLogin.Location = new System.Drawing.Point(123, 144);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(316, 37);
-            this.btnLogin.TabIndex = 2;
+            this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "ورود";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(31, 74);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "نقش ها : ";
+            // 
+            // rdbtnMan
+            // 
+            this.rdbtnMan.AutoSize = true;
+            this.rdbtnMan.ForeColor = System.Drawing.Color.White;
+            this.rdbtnMan.Location = new System.Drawing.Point(123, 72);
+            this.rdbtnMan.Name = "rdbtnMan";
+            this.rdbtnMan.Size = new System.Drawing.Size(121, 23);
+            this.rdbtnMan.TabIndex = 1;
+            this.rdbtnMan.TabStop = true;
+            this.rdbtnMan.Text = "پذیرش آقایان";
+            this.rdbtnMan.UseVisualStyleBackColor = true;
+            this.rdbtnMan.CheckedChanged += new System.EventHandler(this.rdbtnMan_CheckedChanged);
+            // 
+            // rdbtnWoman
+            // 
+            this.rdbtnWoman.AutoSize = true;
+            this.rdbtnWoman.ForeColor = System.Drawing.Color.White;
+            this.rdbtnWoman.Location = new System.Drawing.Point(250, 72);
+            this.rdbtnWoman.Name = "rdbtnWoman";
+            this.rdbtnWoman.Size = new System.Drawing.Size(121, 23);
+            this.rdbtnWoman.TabIndex = 2;
+            this.rdbtnWoman.TabStop = true;
+            this.rdbtnWoman.Text = "پذیرش بانوان";
+            this.rdbtnWoman.UseVisualStyleBackColor = true;
+            this.rdbtnWoman.CheckedChanged += new System.EventHandler(this.rdbtnWoman_CheckedChanged);
+            // 
+            // rdbtnsDelete
+            // 
+            this.rdbtnsDelete.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.rdbtnsDelete.ForeColor = System.Drawing.Color.IndianRed;
+            this.rdbtnsDelete.Location = new System.Drawing.Point(377, 69);
+            this.rdbtnsDelete.Name = "rdbtnsDelete";
+            this.rdbtnsDelete.Size = new System.Drawing.Size(62, 29);
+            this.rdbtnsDelete.TabIndex = 3;
+            this.rdbtnsDelete.Text = "❌";
+            this.rdbtnsDelete.UseVisualStyleBackColor = false;
+            this.rdbtnsDelete.Click += new System.EventHandler(this.rdbtnsDelete_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(451, 151);
+            this.ClientSize = new System.Drawing.Size(451, 192);
+            this.Controls.Add(this.rdbtnsDelete);
+            this.Controls.Add(this.rdbtnWoman);
+            this.Controls.Add(this.rdbtnMan);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtPassword);
@@ -252,6 +309,10 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton rdbtnMan;
+        private System.Windows.Forms.RadioButton rdbtnWoman;
+        private System.Windows.Forms.Button rdbtnsDelete;
     }
 }
 

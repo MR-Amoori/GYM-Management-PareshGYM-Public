@@ -115,5 +115,33 @@ namespace Paresh_GYM_Management_System
             txtPassword.Text = "";
             txtPassword.PasswordChar = '*';
         }
+
+        private void rdbtnsDelete_Click(object sender, EventArgs e)
+        {
+            if (rdbtnMan.Checked == true)
+            {
+                rdbtnMan.Checked = false;
+                txtUsername.Enabled = true;
+                txtUsername.Text = "نام کاربری را وارد نمایید";
+            }
+            if (rdbtnWoman.Checked == true)
+            {
+                rdbtnWoman.Checked = false;
+                txtUsername.Enabled = true;
+                txtUsername.Text = "نام کاربری را وارد نمایید";
+            }
+        }
+
+        private void rdbtnMan_CheckedChanged(object sender, EventArgs e)
+        {
+            txtUsername.Text = "admin2";
+            txtUsername.Enabled = false;
+        }
+
+        private void rdbtnWoman_CheckedChanged(object sender, EventArgs e)
+        {
+            txtUsername.Text = "admin3";
+            txtUsername.Enabled = false;
+        }
     }
 }
