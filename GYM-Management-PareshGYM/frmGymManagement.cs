@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp.Handler;
+using System.Diagnostics;
 
 namespace GYM_Management_PareshGYM
 {
@@ -232,6 +233,7 @@ namespace GYM_Management_PareshGYM
             }
 
             HideWebsite();
+            Debug.WriteLine($"تغییر صفحه لود شد: {currentUrl}");
 
             if (!browser.CanExecuteJavascriptInMainFrame)
             {
@@ -353,17 +355,16 @@ namespace GYM_Management_PareshGYM
 
         private async Task SubmitPasswordAsync()
         {
-            bool passwordExists =
-                await WaitForElementAsync(
-                    "#password");
 
+            Debug.WriteLine("شروع جستجوی فیلد رمز عبور...");
+            bool passwordExists = await WaitForElementAsync("#password");
             if (!passwordExists)
             {
-                ShowLoginError(
-                    "فیلد رمز عبور پیدا نشد.");
-
+                Debug.WriteLine("تایم‌اوت: فیلد رمز عبور در صفحه پیدا نشد.");
+                ShowLoginError("فیلد رمز عبور پیدا نشد.");
                 return;
             }
+            Debug.WriteLine("فیلد رمز عبور پیدا شد. ارسال اطلاعات...");
 
             string encodedPassword =
                 JavaScriptEncode(Passwords.SelectedWebPassword);
